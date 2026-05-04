@@ -1,0 +1,91 @@
+body {overflow-x: hidden;
+}
+.elementbox {border: 2px solid black;
+    padding: 20px;
+    width: 350px;
+    height:350px;
+    position:relative;
+    margin: 20px auto;
+    background-color: #f4f4f4;
+    }
+    .AtomicNumber {
+        position:absolute;
+        top: 15px;
+        left:15px;
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .Mass {
+        position:absolute;
+        top: 15px;
+        right:15px;
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .Symbol {
+        font-size: 150px;
+        margin-top: 90px;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .Name {
+        font-size: 40px;
+        margin-top: 35px;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .numberarrow {
+        position: absolute;
+        top: 50px;
+        left: 25%;
+    }
+    .massarrow {
+        position: absolute;
+        top: 50px;
+        right: 25%;
+    }
+    .symbolarrow {
+        position: absolute;
+        top: 360px;
+        right: 27%;
+    }
+    .namearrow {
+        position: absolute;
+        top: 360px;
+        left: 29%; 
+    }
+
+    .characteristics {
+        font-size: 20px;
+        line-height: 40px;
+        margin-top: 20px;
+        list-style-position: inside;
+        text-align: center;  
+    }
+    #header1 { 
+       text-align: center;
+    }
+    #quizbtn {
+        width: 100px;
+        padding: 12px;
+        position: absolute;
+        right: 15%;
+        bottom: 100px;
+     }
+     @media (max-width: 600px) {
+
+    .elementbox {
+        width: 90%;
+        height: auto;
+    }
+
+    .Symbol {
+        font-size: 100px;
+    }
+
+    .Name,
+    .AtomicNumber,
+    .Mass {
+        font-size: 28px;
+    }
+}

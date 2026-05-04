@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydrogen Quiz</title>
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background: linear-gradient(to right, red, black);
+    }
+
+    .quiz-container {
+        background: white;
+        padding: 20px;
+        margin: 50px auto;
+        width: 300px;
+        border-radius: 10px;
+        border-style: solid;
+        border-width: 8px;
+        border-color: black;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        position: relative;
+    }
+
+    button {
+        display: block;
+        margin: 10px auto;
+        padding: 10px;
+        width: 80%;
+        cursor: pointer;
+    }
+
+    .nav-btn {
+        width: 70px;
+        padding: 6px;
+        position: absolute;
+        bottom: 0px;
+    }
+
+    #nextBtn {
+        right: 10px;
+    }
+
+    #backBtn {
+        left: 10px;
+    }
+
+    #result {
+        font-weight: bold;
+        margin-top: 15px;
+    }
+    #infobtn {
+        width: 100px;
+        padding: 12px;
+        border-style: solid;
+        border-width: 8px;
+        border-color: black;
+    }
+    .btndiv {
+        position: relative;
+        top: 480px;
+    }
+</style>
+</head>
+<body>
+    <div class="btndiv">
+        <a href="index.html">
+        <button id="infobtn">Information Page</button>
+    </a>
+    </div>
+    <div class="quiz-container">
+    <h2 id="question"></h2>
+    <button onclick="checkAnswer(1)" id="btn0"></button>
+    <button onclick="checkAnswer(2)" id="btn1"></button>
+    <button onclick="checkAnswer(3)" id="btn2"></button>
+
+    <p id="result"></p>
+
+    <button id="backBtn" class="nav-btn" onclick="prevQuestion()">Back</button>
+    <button id="nextBtn" class="nav-btn" onclick="nextQuestion()">Next</button>
+</div>
+
+<script>
+const quiz = [
+    {
+        question: "How do you find the number of protons and electrons in an atom?",
+        options: ["Atomic Number", "Group Number", "Neutrons ÷ 2"],
+        correct: 1
+    },
+    {
+        question: "How many protons does Hydrogen have?",
+        options: ["0", "2", "1"],
+        correct: 3
+    },
+    {
+        question: "What is a characteristic of Hydrogen?",
+        options: ["Conductive", "Brittle", "Malleable"],
+        correct: 2
+    },
+    {
+        question: "How do you find the number of neutrons?",
+        options: ["Mass + Atomic Number", "Mass - Atomic Number", "Mass x Atomic Number"],
+        correct: 2
+    },
+    {
+        question: "How many neutrons does Hydrogen have?",
+        options: ["0", "-1", "1"],
+        correct: 1
+    },
+    {
+        question: "Which period is Hydrogen located?",
+        options: ["Hydrogen is not in a period", "3", "1"],
+        correct: 3
+    }
+];
+
+let currentQuestion = 0;
+
+function loadQuestion() {
+    document.getElementById("question").textContent = quiz[currentQuestion].question;
+
+    for (let i = 0; i < 3; i++) {
+        document.getElementById("btn" + i).textContent = quiz[currentQuestion].options[i];
+    }
+
+    document.getElementById("result").textContent = "";
+
+    // Hide Back button on first question
+    document.getElementById("backBtn").style.display = currentQuestion === 0 ? "none" : "block";
+}
+function checkAnswer(selected) { //Make it an alert 
+    if (selected === quiz[currentQuestion].correct) {
+        document.getElementById("result").textContent = "Correct!";
+    } else {
+        document.getElementById("result").textContent = "Incorrect";
+    }
+}
+function nextQuestion() {
+    if (currentQuestion < quiz.length - 1) {
+        currentQuestion++;
+        loadQuestion();
+    } else {
+        document.getElementById("question").textContent = "Quiz Complete!";
+        document.getElementById("result").textContent = "";
+        document.getElementById("btn0").style.display = "none";
+        document.getElementById("btn1").style.display = "none";
+        document.getElementById("btn2").style.display = "none";
+        document.getElementById("nextBtn").style.display = "none";
+        document.getElementById("backBtn").style.display = "none";
+    }
+}
+function prevQuestion() {
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        loadQuestion();
+    }
+}
+// Load first question
+loadQuestion();
+</script> 
+</body>
+</html>
